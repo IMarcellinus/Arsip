@@ -25,4 +25,38 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    
+    public function kesehatanpegawai()
+    {
+        return view('kesejahteraanpegawai.kesehatan');
+    }
+    public function cutipegawai()
+    {
+        return view('kesejahteraanpegawai.cuti');
+    }
+    public function tunjanganpegawai()
+    {
+        return view('kesejahteraanpegawai.tunjangan');
+    }
+    public function pensiunpegawai()
+    {
+        return view('kesejahteraanpegawai.pensiun');
+    }
+    public function promosi()
+    {
+        return view('pengendaliankarir.promosi');
+    }
+    public function disiplinpegawai()
+    {
+        return view('pengendaliankarir.disiplinpegawai');
+    }
+    public function tandapenghargaan()
+    {
+        return view('pengendaliankarir.tandapenghargaan');
+    }
+    public function penilaianprestasi()
+    {
+        return view('pengendaliankarir.penilaianprestasi');
+    }
 }
