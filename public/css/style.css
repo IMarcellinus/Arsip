@@ -1,7 +1,7 @@
-body {
-    margin-top: 60px;
-    background: url('./img/bg.jpg');
+section.login {
+    background: url('../img/bg.jpg');
     background-size: cover;
+    height: 100vh;
 }
 
 a {
