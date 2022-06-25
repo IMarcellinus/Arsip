@@ -59,4 +59,8 @@ class HomeController extends Controller
     {
         return view('pengendaliankarir.penilaianprestasi');
     }
+    public function manajemenuser()
+    {
+        return view('manajemenuser');
+    }
 }
