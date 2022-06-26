@@ -38,3 +38,4 @@ Route::get('/disiplinpegawai', [App\Http\Controllers\HomeController::class, 'dis
 Route::get('/tandapenghargaan', [App\Http\Controllers\HomeController::class, 'tandapenghargaan'])->name('tandapenghargaan');
 Route::get('/penilaianprestasi', [App\Http\Controllers\HomeController::class, 'penilaianprestasi'])->name('penilaianprestasi');
 Route::get('/manajemenuser', [App\Http\Controllers\HomeController::class, 'manajemenuser'])->name('manajemenuser');
+Route::post('/tambahpromosi', [App\Http\Controllers\HomeController::class, 'simpanPromosi'])->name('tambahpromosi');

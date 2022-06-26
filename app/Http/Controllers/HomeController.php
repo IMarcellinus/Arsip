@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Promosi;
 
 class HomeController extends Controller
 {
@@ -62,5 +63,33 @@ class HomeController extends Controller
     public function manajemenuser()
     {
         return view('manajemenuser');
+    }
+
+    public function getPromosi()
+    {
+        $promosi = Promosi::all();
+        return view('home')->with('promosi', $promosi);
+    }
+
+    public function simpanPromosi(Request $request)
+    {
+        $this->validate($request, [
+            'date' => 'required',
+            'namafile' => 'required',
+            'kode' => 'required',
+            'file' => 'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
+        ]);
+        $dokumen = $request->file('file');
+        $nama_dokumen = 'FT'.date('Ymdhis').'.'.$request->file('dokumen')->getClientOriginalExtension();
+        $dokumen->move('dokumen',$nama_dokumen);
+
+        $data = new Promosi();
+        $data->date = $request->date;
+        $data->namafile = $request->namafile;
+        $data->kode = $request->kode;
+        $data->file = $nama_dokumen;
+        $data->save();
+        Session::flash('sukses','Data berhasil di simpan');
+        return Redirect('/promosi');
     }
 }
