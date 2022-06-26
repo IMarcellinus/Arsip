@@ -4,7 +4,8 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <form action="{{ route('tambahpromosi') }}" method="post">
+                    <form action="{{ route('tambahpromosi') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Promosi</h1>
@@ -48,7 +49,7 @@
                                             <div class="mb-3">
                                                 <label for="file" class="form-label">Upload File</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01" name="file">
+                                                    <input type="file" class="custom-file-input" id="file" name="file">
                                                     <label class="custom-file-label" for="file">Choose file</label>
                                                     @error('file')
                                                     <span class="invalid-feedback" role="alert">
@@ -60,7 +61,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                            <input type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Promosi;
+// use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController extends Controller
 {
@@ -79,17 +80,19 @@ class HomeController extends Controller
             'kode' => 'required',
             'file' => 'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
         ]);
-        $dokumen = $request->file('file');
-        $nama_dokumen = 'FT'.date('Ymdhis').'.'.$request->file('dokumen')->getClientOriginalExtension();
+        // $dokumen = $request->file('file');
+        $dokumen = $request->file;
+        $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
 
-        $data = new Promosi();
+        $data = new Promosi;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
         $data->kode = $request->kode;
         $data->file = $nama_dokumen;
         $data->save();
-        Session::flash('sukses','Data berhasil di simpan');
+        // Session::flash('sukses','Data berhasil di simpan');
         return Redirect('/promosi');
+        // dd($nama_dokumen);
     }
 }

@@ -9,6 +9,8 @@ class Promosi extends Model
 {
     use HasFactory;
 
+    protected $table = 'promosis';
+
     protected $fillable = [
         'date',
         'namafile',
@@ -16,5 +18,4 @@ class Promosi extends Model
         'file',
     ];
 
-    protected $table = 'promosis';
 }
