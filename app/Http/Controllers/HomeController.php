@@ -69,7 +69,7 @@ class HomeController extends Controller
     public function getPromosi()
     {
         $promosi = Promosi::all();
-        return view('home')->with('promosi', $promosi);
+        return view('pengendaliankarir.promosi', compact('promosi'));
     }
 
     public function simpanPromosi(Request $request)
@@ -94,5 +94,14 @@ class HomeController extends Controller
         // Session::flash('sukses','Data berhasil di simpan');
         return Redirect('/promosi');
         // dd($nama_dokumen);
+    }
+    
+    public function updatePromosi()
+    {
+        $data = Promosi::find($id);
+        $input = $request->all();
+        $data->fill($input)->save();
+
+        return redirect('/promosi');
     }
 }
