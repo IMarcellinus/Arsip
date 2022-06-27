@@ -4,7 +4,8 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+            <form action="{{ route('tambahtunjangan') }}" method="post" enctype="multipart/form-data">
+                @csrf
             <!-- Main Content -->
             <div id="content">
 
@@ -39,7 +40,7 @@
                                             <div class="mb-3">
                                                 <label for="date" class="form-label">Date</label>
                                                 <div class="input-group date" id="datepicker">
-                                                    <input type="text" class="form-control">
+                                                    <input type="date" name="date" class="form-control">
                                                     <span class="input-group-append">
                                                                 <span class="input-group-text bg-white d-block">
                                                                     <i class="fa fa-calendar"></i>
@@ -49,28 +50,33 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Nama File</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nama">
+                                                <input type="text" name="namafile" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nama">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Kode</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="masukkan kode">
+                                                <input type="text" name="kode" class="form-control" id="formGroupExampleInput2" placeholder="masukkan kode">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="formGroupExampleInput2" class="form-label">Upload File</label>
+                                                <label for="file" class="form-label">Upload File</label>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                    <input type="file" class="custom-file-input" id="file" name="file">
+                                                    <label class="custom-file-label" for="file">Choose file</label>
+                                                    @error('file')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <input type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                        </form>
                         </div>
                         <!-- /.container-fluid -->
 
@@ -94,27 +100,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($tunjangan as $value)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Jonas Alexander</td>
-                                            <td>Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>30</td>
+                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $value->date }}</td>
+                                            <td>{{ $value->namafile }}</td>
+                                            <td>{{ $value->kode }}</td>
                                             <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
                                             </td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Shad Decker</td>
-                                            <td>Regional Director</td>
-                                            <td>Edinburgh</td>
-                                            <td>51</td>
                                             <td>
                                                 <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -122,32 +116,7 @@
                                                 class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>Singapore</td>
-                                            <td>29</td>
-                                            <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

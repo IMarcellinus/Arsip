@@ -60,7 +60,6 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                             <input type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </div>
@@ -69,10 +68,7 @@
                         </form>
                         </div>
                     </div>
-                    
                     <!-- End Tambah Data -->
-                    
-                    
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -105,9 +101,9 @@
                                                 <a href="#" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                 <!-- Modal -->
-                                                <form action="/updatepromosi/{{$value->id}}" method="post" enctype="multipart/form-data">
+                                                <!-- <form action="/updatepromosi/{{$value->id}}" method="post" enctype="multipart/form-data">
                                                 {{ method_field('patch') }}
-                                                {{ csrf_field() }}
+                                                {{ csrf_field() }} -->
                                                 <div class="modal fade" id="edit{{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -154,13 +150,12 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                                                         <input type="submit" class="btn btn-primary" value="Save">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    <!-- </form> -->
                                                     </div>
                                                     <!-- /.container-fluid -->
 
