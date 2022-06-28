@@ -30,7 +30,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('home');
     }
@@ -73,10 +73,15 @@ class HomeController extends Controller
         return view('manajemenuser');
     }
 
-    public function getPromosi()
+    public function getPromosi(Request $request)
     {
-        $promosi = Promosi::all();
-        return view('pengendaliankarir.promosi', compact('promosi'));
+        if ($request) {
+            $promosi = Promosi::where('namafile', 'like', '%'.$request->cari.'%')->get();
+            $promosi = Promosi::where('namafile', 'like', '%'.$request->cari.'%')->get();
+        } else {
+            $promosi = Promosi::all();
+        }
+        return view('pengendaliankarir.promosi', compact('promosi', 'request'));
     }
 
     public function getDisiplin()
@@ -309,12 +314,39 @@ class HomeController extends Controller
         // dd($nama_dokumen);
     }
 
-    public function updatePromosi(Request $request, $id)
+    // public function updatePromosi(Request $request, $id)
+    // {
+    //     $data = Promosi::find($id);
+    //     $input = $request->all();
+    //     $data->fill($input)->save();
+
+    //     return redirect('/promosi');
+    // }
+
+    public function searchPromosi(Request $request)
+    {
+        $cari = $request->kata;
+        $promosi = Promosi::where('kode', 'like', '%'.$cari.'%');
+        return view('pengendaliankarir.promosi', compact('promosi','cari'));
+    }
+
+    public function tampilpromosi($id)
     {
         $data = Promosi::find($id);
-        $input = $request->all();
-        $data->fill($input)->save();
-
-        return redirect('/promosi');
+        return view('pengendaliankarir.promosi', compact('data'));
+    }
+    
+    public function updatepromosi(Request $request, $id)
+    {
+        $data = Promosi::find($id);
+        $data->update($request->all());
+        return redirect()->route('promosi')->with('success','Data berhasil diupdate');
+    }
+    
+    public function deletepromosi($id)
+    {
+        $data = Promosi::find($id);
+        $data->delete();
+        return redirect()->route('promosi')->with('success','Data berhasil dihapus');
     }
 }

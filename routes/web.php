@@ -47,4 +47,8 @@ Route::post('/tambahkesehatan', [App\Http\Controllers\HomeController::class, 'si
 Route::post('/tambahcuti', [App\Http\Controllers\HomeController::class, 'simpanCuti'])->name('tambahcuti');
 Route::post('/tambahtunjangan', [App\Http\Controllers\HomeController::class, 'simpanTunjangan'])->name('tambahtunjangan');
 Route::post('/tambahpensiun', [App\Http\Controllers\HomeController::class, 'simpanPensiun'])->name('tambahpensiun');
-Route::patch('/updatepromosi/{id}', ['as' => 'updatepromosi', 'uses' => 'HomeController@updatePromosi']);
+// Route::patch('/updatepromosi/{id}', ['as' => 'updatepromosi', 'uses' => 'HomeController@updatePromosi']);
+Route::get('/tampilpromosi/{id}', [HomeController::class, 'tampilpromosi'])->name('tampilpromosi');
+Route::post('/updatepromosi/{id}', [App\Http\Controllers\HomeController::class, 'updatepromosi'])->name('updatepromosi');
+Route::get('/deletepromosi/{id}', [App\Http\Controllers\HomeController::class, 'deletepromosi'])->name('deletepromosi');
+Route::get('/caripromosi', [App\Http\Controllers\HomeController::class, 'searchPromosi'])->name('caripromosi');
