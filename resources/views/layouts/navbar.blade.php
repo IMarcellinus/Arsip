@@ -88,7 +88,7 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Sub Menu</h6>
-                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.pegawai') }}"><i class="fas fa-user-md"></i>Kesehatan</a>
+                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.kesehatan') }}"><i class="fas fa-user-md"></i>Kesehatan</a>
                             <a class="collapse-item text-start" href="{{ route('kesejahteraan.cuti') }}"><i class="fas fa-retweet"></i> Cuti</a>
                             <a class="collapse-item text-start" href="{{ route('kesejahteraan.tunjangan') }}"><i class="fas fa-coins"></i> Tunjangan</a>
                             <a class="collapse-item text-start" href="{{ route('kesejahteraan.pensiun') }}"><i class="fas fa-handshake"></i> Pensiun</a>

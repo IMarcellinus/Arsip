@@ -1,6 +1,5 @@
 @extends('layouts.navbar')
 @section('content')
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <form action="{{ route('tambahpenghargaan') }}" method="post" enctype="multipart/form-data">
@@ -99,11 +98,70 @@
                                                 <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
                                             </td>
                                             <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
+                                                <!-- tombol edit -->
+                                                <a href="#/tampilpenghargaan/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                                    <div class="modal fade" id="edit{{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Data') }}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/updatepenghargaan/{{ $value->id }}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="row d-flex justify-content-center">
+                                                                    <div class="col-12">
+                                                                        <div class="mb-3">
+                                                                            <label for="date" class="form-label">Date</label>
+                                                                            <div class="input-group date" id="datepicker">
+                                                                                <input type="date" name="date" class="form-control" value="{{ $value->date }}">
+                                                                                <span class="input-group-append">
+                                                                                    <span class="input-group-text bg-white d-block">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="formGroupExampleInput2" class="form-label">Nama File</label>
+                                                                            <input type="text" name="namafile" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nama" value="{{ $value->namafile }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="formGroupExampleInput2" class="form-label">Kode</label>
+                                                                            <input type="text" name="kode" class="form-control" id="formGroupExampleInput2" placeholder="masukkan kode" value="{{ $value->kode }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="file" class="form-label">Upload File</label>
+                                                                            <div class="custom-file">
+                                                                                <input type="file" class="custom-file-input" id="file" name="file">
+                                                                                <label class="custom-file-label" for="file">Choose file</label>
+                                                                                @error('file')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                                @enderror
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <input type="submit" class="btn btn-primary" value="Save">
+                                                                    </div>
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- </form> -->
+                                                    </div>
+                                                    <!-- /.container-fluid -->
+                                                </div>
+                                                    <!-- Tombol Delete -->
+                                                    <a href="/deletepenghargaan/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

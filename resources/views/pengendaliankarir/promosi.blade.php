@@ -11,13 +11,6 @@
                         <h1 class="h3 mb-0 text-gray-800">Promosi</h1>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
                     </div>
-                    <form action="{{ route('promosi') }}" method="GET">
-                        <input type="text" class="form-control" name="cari" placeholder="Ketikan sesuatu" value="{{$request->cari}}">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                        </div>
-                    </form>
-
                     <!-- Button trigger modal -->
 
                     <!-- Modal -->
@@ -108,7 +101,6 @@
                                                 <a href="#/tampilpromosi/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                 <!-- Modal -->
-                                                
                                                 <div class="modal fade" id="edit{{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">

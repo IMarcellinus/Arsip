@@ -314,15 +314,6 @@ class HomeController extends Controller
         // dd($nama_dokumen);
     }
 
-    // public function updatePromosi(Request $request, $id)
-    // {
-    //     $data = Promosi::find($id);
-    //     $input = $request->all();
-    //     $data->fill($input)->save();
-
-    //     return redirect('/promosi');
-    // }
-
     public function searchPromosi(Request $request)
     {
         $cari = $request->kata;
@@ -342,11 +333,152 @@ class HomeController extends Controller
         $data->update($request->all());
         return redirect()->route('promosi')->with('success','Data berhasil diupdate');
     }
+
+    public function updatedisiplin(Request $request, $id)
+    {
+        $data = Disiplin::find($id);
+        $data->update($request->all());
+        return redirect()->route('disiplinpegawai')->with('success','Data berhasil diupdate');
+    }
     
     public function deletepromosi($id)
     {
         $data = Promosi::find($id);
         $data->delete();
         return redirect()->route('promosi')->with('success','Data berhasil dihapus');
+    }
+    
+    public function deletedisiplin($id)
+    {
+        $data = Disiplin::find($id);
+        $data->delete();
+        return redirect()->route('disiplinpegawai');
+    }
+    
+    public function tampildisiplin($id)
+    {
+        $data = Disiplin::find($id);
+        return view('pengendaliankarir.promosi', compact('data'));
+    }
+
+    
+    public function tampilpenghargaan($id)
+    {
+        $data = Penghargaan::find($id);
+        return view('pengendaliankarir.tandapenghargaan', compact('data'));
+    }
+    
+    public function deletepenghargaan($id)
+    {
+        $data = Penghargaan::find($id);
+        $data->delete();
+        return redirect()->route('tandapenghargaan');
+    }
+    
+    public function updatepenghargaan(Request $request, $id)
+    {
+        $data = Penghargaan::find($id);
+        $data->update($request->all());
+        return redirect()->route('tandapenghargaan');
+    }
+    
+    public function deleteprestasi($id)
+    {
+        $data = Prestasi::find($id);
+        $data->delete();
+        return redirect()->route('penilaianprestasi');
+    }
+    
+    public function tampilprestasi($id)
+    {
+        $data = Prestasi::find($id);
+        return view('pengendaliankarir.penilaianprestasi', compact('data'));
+    }
+    
+    public function updateprestasi(Request $request, $id)
+    {
+        $data = Prestasi::find($id);
+        $data->update($request->all());
+        return redirect()->route('penilaianprestasi');
+    }
+    
+    public function deletekesehatan($id)
+    {
+        $data = Kesehatan::find($id);
+        $data->delete();
+        return redirect('/kesehatan');
+    }
+    
+    public function updatedkesehatan(Request $request, $id)
+    {
+        $data = Kesehatan::find($id);
+        $data->update($request->all());
+        return redirect('/kesehatan');
+    }
+
+    public function tampilkesehatan($id)
+    {
+        $data = Kesehatan::find($id);
+        return view('kesejahteraanpegawai.kesehatan', compact('data'));
+    }
+
+    public function deletecuti($id)
+    {
+        $data = Cuti::find($id);
+        $data->delete();
+        return redirect('/cuti');
+    }
+    
+    public function updatecuti(Request $request, $id)
+    {
+        $data = Cuti::find($id);
+        $data->update($request->all());
+        return redirect('/cuti');
+    }
+    
+    public function tampilcuti($id)
+    {
+        $data = Cuti::find($id);
+        return view('kesejahteraanpegawai.cuti', compact('data'));
+    }
+
+    public function deletetunjangan($id)
+    {
+        $data = Tunjangan::find($id);
+        $data->delete();
+        return redirect('/tunjangan');
+    }
+    
+    public function updatetunjangan(Request $request, $id)
+    {
+        $data = Tunjangan::find($id);
+        $data->update($request->all());
+        return redirect('/tunjangan');
+    }
+    
+    public function tampiltunjangan($id)
+    {
+        $data = Tunjangan::find($id);
+        return view('kesejahteraanpegawai.tunjangan', compact('data'));
+    }
+
+    public function deletepensiun($id)
+    {
+        $data = Pensiun::find($id);
+        $data->delete();
+        return redirect('/pensiun');
+    }
+    
+    public function updatepensiun(Request $request, $id)
+    {
+        $data = Pensiun::find($id);
+        $data->update($request->all());
+        return redirect('/pensiun');
+    }
+    
+    public function tampilpensiun($id)
+    {
+        $data = Pensiun::find($id);
+        return view('kesejahteraanpegawai.pensiun', compact('data'));
     }
 }
