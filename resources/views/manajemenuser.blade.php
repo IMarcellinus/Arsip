@@ -21,37 +21,47 @@
                                 <span aria-hidden="true">&times;</span>
                               </button>
                                 </div>
+                                <form action="{{ route('tambahuser') }}" method="post">
+                                @csrf
                                 <div class="modal-body">
                                     <div class="row d-flex justify-content-center">
                                         <div class="col-12">
                                             <div class="mb-3">
+                                                <label for="formGroupExampleInput2" class="form-label">Name</label>
+                                                <input type="text" class="form-control" name="name" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Username</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                                <input type="text" class="form-control" name="username" id="formGroupExampleInput2" placeholder="masukkan Username">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">email</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email">
+                                                <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">password</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
+                                                <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="inputState">Role</label>
-                                                <select id="inputState" class="form-control">
-                                                  <option selected>1</option>
-                                                  <option>2</option>
-                                                  <option>3</option>
-                                                  <option>4</option>
+                                                <select id="inputState" name="role" class="form-control">
+                                                  <option value="1" selected>Admin 1</option>
+                                                  <option value="2">Admin 2</option>
+                                                  <option value="3">Admin 3</option>
+                                                  <option value="4">Admin 4</option>
+                                                  <option value="5">Admin 5</option>
+                                                  <option value="6">Admin 6</option>
                                                 </select>
                                               </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                            <input type="submit" value="Save Changes" class="btn btn-primary">
+                                        </div> 
                                     </div>
                                 </div>
+                                </form>
                             </div>
 
                         </div>
@@ -75,52 +85,65 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($data as $x)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Jonas Alexander</td>
-                                            <td>Developer</td>
+                                            <td>{{ $x->id }}</td>
+                                            <td>{{ $x->username }}</td>
+                                            <td>{{ $x->role }}</td>
                                             <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Shad Decker</td>
-                                            <td>Regional Director</td>
-                                            <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <a href="#/manajemenuser/{{ $x->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$x->id}}" type="button" data-toggle="modal"><i
+                                                        class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
+                                                <!-- Modal -->
+                                                
+                                                <!-- Tombol Delete -->
+                                                <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>
-                                                <a href="#" title="Edit"><button class="btn btn-primary btn-sm"><i
-                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Student"><i
-                                                class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </td>
-                                        </tr>
+                                        <div class="modal fade" id="edit{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Data') }}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/updateuser/{{ $x->id }}" method="post" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <div class="row d-flex justify-content-center">
+                                                                    <div class="col-12">
+                                                                        <div class="mb-3">
+                                                                        <label for="formGroupExampleInput2" class="form-label">Name</label>
+                                                                        <input type="text" value="{{ $x->name }}" class="form-control" name="name" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="formGroupExampleInput2" class="form-label">Username</label>
+                                                                        <input type="text" value="{{ $x->username }}" class="form-control" name="username" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="formGroupExampleInput2" class="form-label">email</label>
+                                                                        <input type="text" value="{{ $x->email }}" name="email" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="formGroupExampleInput2" class="form-label">password</label>
+                                                                        <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <input type="submit" class="btn btn-primary" value="Save">
+                                                                    </div>
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- </form> -->
+                                                    </div>
+                                                    <!-- /.container-fluid -->
+                                                </div>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

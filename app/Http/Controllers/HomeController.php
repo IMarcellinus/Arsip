@@ -11,6 +11,8 @@ use App\Models\Kesehatan;
 use App\Models\Cuti;
 use App\Models\Tunjangan;
 use App\Models\Pensiun;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 // use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController extends Controller
@@ -70,7 +72,8 @@ class HomeController extends Controller
     }
     public function manajemenuser()
     {
-        return view('manajemenuser');
+        $data = User::all();
+        return view('manajemenuser' , compact('data'));
     }
 
     public function getPromosi(Request $request)
@@ -333,7 +336,7 @@ class HomeController extends Controller
         $data->update($request->all());
         return redirect()->route('promosi')->with('success','Data berhasil diupdate');
     }
-
+    
     public function updatedisiplin(Request $request, $id)
     {
         $data = Disiplin::find($id);
@@ -360,7 +363,7 @@ class HomeController extends Controller
         $data = Disiplin::find($id);
         return view('pengendaliankarir.promosi', compact('data'));
     }
-
+    
     
     public function tampilpenghargaan($id)
     {
@@ -415,13 +418,13 @@ class HomeController extends Controller
         $data->update($request->all());
         return redirect('/kesehatan');
     }
-
+    
     public function tampilkesehatan($id)
     {
         $data = Kesehatan::find($id);
         return view('kesejahteraanpegawai.kesehatan', compact('data'));
     }
-
+    
     public function deletecuti($id)
     {
         $data = Cuti::find($id);
@@ -441,7 +444,7 @@ class HomeController extends Controller
         $data = Cuti::find($id);
         return view('kesejahteraanpegawai.cuti', compact('data'));
     }
-
+    
     public function deletetunjangan($id)
     {
         $data = Tunjangan::find($id);
@@ -468,6 +471,13 @@ class HomeController extends Controller
         $data->delete();
         return redirect('/pensiun');
     }
+
+    public function deleteuser($id)
+    {
+        $data = User::find($id);
+        $data->delete();
+        return redirect('/manajemenuser');
+    }
     
     public function updatepensiun(Request $request, $id)
     {
@@ -480,5 +490,23 @@ class HomeController extends Controller
     {
         $data = Pensiun::find($id);
         return view('kesejahteraanpegawai.pensiun', compact('data'));
+    }
+    public function tambahuser(Request $data)
+    {
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'role' => $data['role'],
+            'password' => Hash::make($data['password']),
+        ]);
+        return redirect("/manajemenuser");
+    }
+
+    public function updateuser(Request $request, $id)
+    {
+        $data = User::find($id);
+        $data->update($request->all());
+        return redirect()->route('manajemenuser');
     }
 }

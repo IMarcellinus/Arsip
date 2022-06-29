@@ -80,3 +80,7 @@ Route::get('/pensiun', [App\Http\Controllers\HomeController::class, 'getPensiun'
 Route::get('/deletepensiun/{id}', [App\Http\Controllers\HomeController::class, 'deletepensiun'])->name('deletepensiun');
 Route::post('/updatepensiun/{id}', [App\Http\Controllers\HomeController::class, 'updatepensiun'])->name('updatepensiun');
 Route::get('/pensiun/{id}', [HomeController::class, 'pensiun'])->name('pensiun');
+// crud manajemen user
+Route::post('/tambahuser', [App\Http\Controllers\HomeController::class, 'tambahuser'])->name('tambahuser');
+Route::post('/updateuser/{id}', [App\Http\Controllers\HomeController::class, 'updateuser'])->name('updateuser');
+Route::get('/deleteuser/{id}', [App\Http\Controllers\HomeController::class, 'deleteuser'])->name('deleteuser');
