@@ -170,7 +170,7 @@
                                                     <!-- /.container-fluid -->
                                                     
                                                     </div>
-                                                <a href="/deletekesehatan/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="/deletekesehatan/{{ $value->id }}" class="btn btn-danger bt">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach

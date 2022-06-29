@@ -34,8 +34,7 @@
     <div class="container">
         <div class="row justify-content-sm-center">
             <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-9 mt-5">
-                <h1 class="text-center">KEARSIPAN KEPEGAWAIAN</h1>
-                <h2 class="text-center">PT UNILEVER Tbk.</h2>
+                <h2 class="text-center">KEARSIPAN KEPEGAWAIAN PT UNILEVER Tbk.</h2>
                 <div class="shadow-lg">
                     <div class="p-5">
                         <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>

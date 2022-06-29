@@ -96,7 +96,7 @@
                                                 <!-- Modal -->
                                                 
                                                 <!-- Tombol Delete -->
-                                                <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger">Delete</a>
+                                                <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="edit{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,7 +153,7 @@
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; PT. Unilever.Tbk 20221</span>
+                                <span>Copyright &copy; PT. Unilever.Tbk 2022</span>
                             </div>
                         </div>
                     </footer>
