@@ -18,7 +18,9 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Kesehatan</h1>
+                        @if($role == '1' || $role == '3' || $role == '2' || $role == '4')
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
+                        @endif
                     </div>
 
                     <!-- Button trigger modal -->
@@ -95,7 +97,9 @@
                                             <th>Kode</th>
                                             <th>Nama File</th>
                                             <th>File</th>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -108,6 +112,7 @@
                                             <td>
                                                 <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
                                             </td>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
                                                 <a href="#/tampilkesehatan/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
@@ -172,6 +177,7 @@
                                                     </div>
                                                 <a href="/deletekesehatan/{{ $value->id }}" class="btn btn-danger bt">Delete</a>
                                             </td>
+                                            @endif
                                         </tr>
                                         @endforeach
                                     </tbody>

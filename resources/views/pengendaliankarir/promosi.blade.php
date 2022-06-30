@@ -9,7 +9,9 @@
                     
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Promosi</h1>
+                        @if($role == '1' || $role == '3' || $role == '2' || $role == '4')
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
+                        @endif
                     </div>
                     
                     <!-- Button trigger modal -->
@@ -69,13 +71,15 @@
                         </div>
                     </div>
                     <!-- End Tambah Data -->
-                    <form class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
+                    <form method="get" action="{{ route('promosi') }}" class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="search" name="search" class="form-control bg-light border-secondary small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <!-- <input type="text" name="search" class="form-control bg-light border-secondary small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
+                            <input class="form-control bg-light border-secondary small" id="myInput" type="text" placeholder="Search..">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
+                                <!-- <input type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> -->
                             </div>
                         </div>
 
@@ -96,10 +100,12 @@
                                             <th>Nama File</th>
                                             <th>Kode</th>
                                             <th>File</th>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="myTable">
                                         @foreach($promosi as $value)
                                         <tr>
                                             <td>{{ $value->id }}</td>
@@ -109,6 +115,7 @@
                                             <td>
                                                 <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
                                             </td>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
                                                 <!-- Tombol Edit -->
                                                 <a href="#/tampilpromosi/{{ $value->id }}" title="Edit"><button class="btn btn-primary " data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
@@ -150,7 +157,7 @@
                                                                         <div class="mb-3">
                                                                             <label for="file" class="form-label">Upload File</label>
                                                                             <div class="custom-file">
-                                                                                <input type="file" class="custom-file-input" id="file" name="file">
+                                                                                <input type="file" class="custom-file-input" id="file" name="file" value="{{ asset('dokumen/', $value->namafile) }}">
                                                                                 <label class="custom-file-label" for="file">Choose file</label>
                                                                                 @error('file')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -176,6 +183,7 @@
                                                 <!-- Tombol Delete -->
                                                 <a href="/deletepromosi/{{ $value->id }}" class="btn btn-danger">Delete</a>
                                             </td>
+                                            @endif
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -243,6 +251,14 @@
             <script type="text/javascript">
                 $(function() {
                     $('#datepicker').datepicker();
+                });
+                $(document).ready(function(){
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
                 });
             </script>
 @endsection

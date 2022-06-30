@@ -38,6 +38,7 @@ Route::get('/tampilpromosi/{id}', [HomeController::class, 'tampilpromosi'])->nam
 Route::post('/updatepromosi/{id}', [App\Http\Controllers\HomeController::class, 'updatepromosi'])->name('updatepromosi');
 Route::get('/deletepromosi/{id}', [App\Http\Controllers\HomeController::class, 'deletepromosi'])->name('deletepromosi');
 Route::get('/caripromosi', [App\Http\Controllers\HomeController::class, 'searchPromosi'])->name('caripromosi');
+Route::get('/editgambarpromosi/{id}', [App\Http\Controllers\HomeController::class, 'editgambarpromosi'])->name('editgambarpromosi');
 // Crud Disiplin
 Route::get('/tampildisiplin/{id}', [HomeController::class, 'tampildisiplin'])->name('tampildisiplin');
 Route::get('/deletedisiplin/{id}', [App\Http\Controllers\HomeController::class, 'deletedisiplin'])->name('deletedisiplin');

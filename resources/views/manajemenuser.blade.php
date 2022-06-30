@@ -6,7 +6,9 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Manajemen User</h1>
+                        @if($role == '1' || $role == '3' || $role == '2' || $role == '4')
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
+                        @endif
                     </div>
 
                     <!-- Button trigger modal -->
@@ -81,7 +83,9 @@
                                             <th>No</th>
                                             <th>User</th>
                                             <th>Role</th>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,6 +94,7 @@
                                             <td>{{ $x->id }}</td>
                                             <td>{{ $x->username }}</td>
                                             <td>{{ $x->role }}</td>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
                                                 <a href="#/manajemenuser/{{ $x->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$x->id}}" type="button" data-toggle="modal"><i
                                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
@@ -98,6 +103,7 @@
                                                 <!-- Tombol Delete -->
                                                 <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
+                                            @endif
                                         </tr>
                                         <div class="modal fade" id="edit{{$x->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">

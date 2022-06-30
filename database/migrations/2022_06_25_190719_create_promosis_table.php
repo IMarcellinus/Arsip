@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('namafile');
             $table->date('date');
-            $table->integer('kode');
+            $table->string('kode');
             $table->string('file');
             $table->timestamps();
         });

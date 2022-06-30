@@ -7,7 +7,9 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Tanda Penghargaan</h1>
+                        @if($role == '1' || $role == '3' || $role == '2' || $role == '4')
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
+                        @endif
                     </div>
 
                     <!-- Button trigger modal -->
@@ -84,7 +86,9 @@
                                             <th>Nama File</th>
                                             <th>Kode</th>
                                             <th>File</th>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,6 +101,7 @@
                                             <td>
                                                 <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
                                             </td>
+                                            @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
                                                 <!-- tombol edit -->
                                                 <a href="#/tampilpenghargaan/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
@@ -162,6 +167,7 @@
                                                     <!-- Tombol Delete -->
                                                     <a href="/deletepenghargaan/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
+                                                @endif
                                         </tr>
                                         @endforeach
                                     </tbody>

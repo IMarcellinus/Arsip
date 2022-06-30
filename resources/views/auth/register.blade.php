@@ -41,12 +41,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="rp;e" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                            <label for="nim" class="col-md-4 col-form-label text-md-end">{{ __('NIM') }}</label>
                             
                             <div class="col-md-6">
-                                <input id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role">
+                                <input id="nim" type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" required autocomplete="nim">
                                 
-                                @error('role')
+                                @error('nim')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

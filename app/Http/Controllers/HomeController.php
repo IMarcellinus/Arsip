@@ -13,6 +13,7 @@ use App\Models\Tunjangan;
 use App\Models\Pensiun;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 // use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController extends Controller
@@ -73,85 +74,70 @@ class HomeController extends Controller
     public function manajemenuser()
     {
         $data = User::all();
-        return view('manajemenuser' , compact('data'));
+        $role = Auth::user()->role;
+        return view('manajemenuser' , compact('data' , 'role'));
     }
 
     public function getPromosi(Request $request)
     {
+        $role = Auth::user()->role;
         if ($request) {
-            $promosi = Promosi::where('namafile', 'like', '%'.$request->cari.'%')->get();
-            $promosi = Promosi::where('namafile', 'like', '%'.$request->cari.'%')->get();
+            $promosi = Promosi::where('namafile', 'like', '%'.$request->search.'%')->get();
         } else {
             $promosi = Promosi::all();
         }
-        return view('pengendaliankarir.promosi', compact('promosi', 'request'));
+        return view('pengendaliankarir.promosi', compact('promosi', 'request' , 'role'));
     }
 
     public function getDisiplin()
     {
         $disiplin = Disiplin::all();
-        return view('pengendaliankarir.disiplinpegawai', compact('disiplin'));
+        $role = Auth::user()->role;
+        return view('pengendaliankarir.disiplinpegawai', compact('disiplin' , 'role'));
     }
 
     public function getPenghargaan()
     {
         $penghargaan = Penghargaan::all();
-        return view('pengendaliankarir.tandapenghargaan', compact('penghargaan'));
+        $role = Auth::user()->role;
+        return view('pengendaliankarir.tandapenghargaan', compact('penghargaan' , 'role'));
     }
 
     public function getPrestasi()
     {
         $prestasi = Prestasi::all();
-        return view('pengendaliankarir.penilaianprestasi', compact('prestasi'));
+        $role = Auth::user()->role;
+        return view('pengendaliankarir.penilaianprestasi', compact('prestasi' , 'role'));
     }
 
     public function getKesehatan()
     {
         $kesehatan = Kesehatan::all();
-        return view('kesejahteraanpegawai.kesehatan', compact('kesehatan'));
+        $role = Auth::user()->role;
+        return view('kesejahteraanpegawai.kesehatan', compact('kesehatan' , 'role'));
     }
 
     public function getCuti()
     {
         $cuti = Cuti::all();
-        return view('kesejahteraanpegawai.cuti', compact('cuti'));
+        $role = Auth::user()->role;
+        return view('kesejahteraanpegawai.cuti', compact('cuti' , 'role'));
     }
 
     public function getTunjangan()
     {
         $tunjangan = Tunjangan::all();
-        return view('kesejahteraanpegawai.tunjangan', compact('tunjangan'));
+        $role = Auth::user()->role;
+        return view('kesejahteraanpegawai.tunjangan', compact('tunjangan' , 'role'));
     }
     public function getPensiun()
     {
         $pensiun = Pensiun::all();
-        return view('kesejahteraanpegawai.pensiun', compact('pensiun'));
+        $role = Auth::user()->role;
+        return view('kesejahteraanpegawai.pensiun', compact('pensiun' , 'role'));
     }
 
-    public function simpanPromosi(Request $request)
-    {
-        $this->validate($request, [
-            'date' => 'required',
-            'namafile' => 'required',
-            'kode' => 'required',
-            'file' => 'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
-        ]);
-        // $dokumen = $request->file('file');
-        $dokumen = $request->file;
-        $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
-        $dokumen->move('dokumen',$nama_dokumen);
-
-        $data = new Promosi;
-        $data->date = $request->date;
-        $data->namafile = $request->namafile;
-        $data->kode = $request->kode;
-        $data->file = $nama_dokumen;
-        $data->save();
-        // Session::flash('sukses','Data berhasil di simpan');
-        return Redirect('/promosi');
-        // dd($nama_dokumen);
-    }
-
+    
     public function simpanDisiplin(Request $request)
     {
         $this->validate($request, [
@@ -164,7 +150,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Disiplin;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -175,7 +161,7 @@ class HomeController extends Controller
         return Redirect('/disiplinpegawai');
         // dd($nama_dokumen);
     }
-
+    
     public function simpanPenghargaan(Request $request)
     {
         $this->validate($request, [
@@ -188,7 +174,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Penghargaan;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -199,7 +185,7 @@ class HomeController extends Controller
         return Redirect('/tandapenghargaan');
         // dd($nama_dokumen);
     }
-
+    
     public function simpanPrestasi(Request $request)
     {
         $this->validate($request, [
@@ -212,7 +198,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Prestasi;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -236,7 +222,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Kesehatan;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -247,7 +233,7 @@ class HomeController extends Controller
         return Redirect('/kesehatan');
         // dd($nama_dokumen);
     }
-
+    
     public function simpanCuti(Request $request)
     {
         $this->validate($request, [
@@ -259,7 +245,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Cuti;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -270,7 +256,7 @@ class HomeController extends Controller
         return Redirect('/cuti');
         // dd($nama_dokumen);
     }
-
+    
     public function simpanTunjangan(Request $request)
     {
         $this->validate($request, [
@@ -282,7 +268,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Tunjangan;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -293,7 +279,7 @@ class HomeController extends Controller
         return Redirect('/tunjangan');
         // dd($nama_dokumen);
     }
-
+    
     public function simpanPensiun(Request $request)
     {
         $this->validate($request, [
@@ -305,7 +291,7 @@ class HomeController extends Controller
         $dokumen = $request->file;
         $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
         $dokumen->move('dokumen',$nama_dokumen);
-
+        
         $data = new Pensiun;
         $data->date = $request->date;
         $data->namafile = $request->namafile;
@@ -316,25 +302,69 @@ class HomeController extends Controller
         return Redirect('/pensiun');
         // dd($nama_dokumen);
     }
-
+    
     public function searchPromosi(Request $request)
     {
         $cari = $request->kata;
         $promosi = Promosi::where('kode', 'like', '%'.$cari.'%');
         return view('pengendaliankarir.promosi', compact('promosi','cari'));
     }
-
+    
     public function tampilpromosi($id)
     {
         $data = Promosi::find($id);
         return view('pengendaliankarir.promosi', compact('data'));
     }
     
+    public function simpanPromosi(Request $request)
+    {
+        $this->validate($request, [
+            'date' => 'required',
+            'namafile' => 'required',
+            'kode' => 'required',
+            'file' => 'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
+        ]);
+        // $dokumen = $request->file('file');
+        $dokumen = $request->file;
+        $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
+        $dokumen->move('dokumen',$nama_dokumen);
+
+        $data = new Promosi;
+        $data->date = $request->date;
+        $data->namafile = $request->namafile;
+        $data->kode = $request->kode;
+        $data->file = $nama_dokumen;
+        $data->save();
+        // Session::flash('sukses','Data berhasil di simpan');
+        return Redirect('/promosi');
+        // dd($nama_dokumen);
+    }
+    
     public function updatepromosi(Request $request, $id)
     {
+        // $data = Promosi::find($id);
+        // $data->update($request->all());
+        // return redirect('promosi');
         $data = Promosi::find($id);
-        $data->update($request->all());
-        return redirect()->route('promosi')->with('success','Data berhasil diupdate');
+        if($request->has('file')){
+            $this->validate($request, [
+                'file' => 'mimes:doc,docx,pdf,xls,xlsx,pdf,ppt,pptx'
+            ]);
+            $dokumen = $request->file;
+            $nama_dokumen = time().'.'.$dokumen->getClientOriginalExtension();
+            $dokumen->move('dokumen',$nama_dokumen);
+            $data->date = $request->date;
+            $data->namafile = $request->namafile;
+            $data->kode = $request->kode;
+            $data->file = $nama_dokumen;
+            $data->update();
+        } else{
+            $data->date = $request->date;
+            $data->namafile = $request->namafile;
+            $data->kode = $request->kode;
+            $data->update();
+        }
+        return Redirect('/promosi');
     }
     
     public function updatedisiplin(Request $request, $id)
@@ -508,5 +538,11 @@ class HomeController extends Controller
         $data = User::find($id);
         $data->update($request->all());
         return redirect()->route('manajemenuser');
+    }
+
+    public function editgambarpromosi($id)
+    {
+        $dt = Promosi::findorfail($id);
+        return view('pengendaliankarir.promosi', compact('dt'));
     }
 }
