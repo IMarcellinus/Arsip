@@ -36,10 +36,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $list_promosi = Promosi::pluck('kode');
         return view('home');
     }
-
     
     public function dashboard()
     {
@@ -54,6 +52,7 @@ class HomeController extends Controller
         $user = User::count();
         return view('dashboard', compact('promosi', 'penghargaan','disiplin', 'prestasi', 'kesehatan', 'cuti', 'tunjangan', 'pensiun', 'user'));
     }
+
     public function kesehatanpegawai()
     {
         return view('kesejahteraanpegawai.kesehatan');

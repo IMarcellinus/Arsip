@@ -105,10 +105,11 @@
                                             @endif
                                         </tr>
                                     </thead>
+                                    <?php $no=1; ?>
                                     <tbody id="myTable">
                                         @foreach($cuti as $value)
                                         <tr>
-                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $no++ }}</td>
                                             <td>{{ $value->date }}</td>
                                             <td>{{ $value->namafile }}</td>
                                             <td>{{ $value->kode }}</td>

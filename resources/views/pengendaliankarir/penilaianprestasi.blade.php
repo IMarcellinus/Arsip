@@ -103,9 +103,10 @@
                                         </tr>
                                     </thead>
                                     <tbody id="myTable">
+                                        <?php $no=1; ?>
                                         @foreach($prestasi as $value)
                                         <tr>
-                                            <td>{{ $value->id }}</td>
+                                            <td>{{ $no++ }}</td>
                                             <td>{{ $value->date }}</td>
                                             <td>{{ $value->namafile }}</td>
                                             <td>{{ $value->kode }}</td>

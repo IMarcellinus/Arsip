@@ -89,9 +89,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no=1; ?>
                                         @foreach($data as $x)
                                         <tr>
-                                            <td>{{ $x->id }}</td>
+                                            <td>{{ $no++ }}</td>
                                             <td>{{ $x->username }}</td>
                                             <td>{{ $x->role }}</td>
                                             @if($role == '1' || $role == '3' || $role == '5')
