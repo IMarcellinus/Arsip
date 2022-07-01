@@ -19,9 +19,6 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
                                 </div>
                                 <form action="{{ route('tambahuser') }}" method="post">
                                 @csrf
@@ -61,8 +58,7 @@
                                               </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                            <a href="/manajemenuser"><button type="button" class="btn btn-secondary" data-toggle="modal">Close</button></a>
                                             <input type="submit" value="Save Changes" class="btn btn-primary">
                                         </div> 
                                     </div>
@@ -113,9 +109,6 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Data') }}</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="/updateuser/{{ $x->id }}" method="post" enctype="multipart/form-data">
@@ -141,7 +134,7 @@
                                                                     <div class="mb-3">
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <a href="/manajemenuser"><button type="button" class="btn btn-secondary" data-toggle="modal">Close</button></a>
                                                                         <input type="submit" class="btn btn-primary" value="Save">
                                                                     </div>
                                                                 </form>

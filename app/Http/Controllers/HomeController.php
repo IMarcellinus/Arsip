@@ -36,10 +36,24 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        $list_promosi = Promosi::pluck('kode');
         return view('home');
     }
 
     
+    public function dashboard()
+    {
+        $promosi = Promosi::count();
+        $disiplin = Disiplin::count();
+        $penghargaan = Penghargaan::count();
+        $prestasi = Prestasi::count();
+        $kesehatan = Kesehatan::count();
+        $cuti = Cuti::count();
+        $tunjangan = Tunjangan::count();
+        $pensiun = Pensiun::count();
+        $user = User::count();
+        return view('dashboard', compact('promosi', 'penghargaan','disiplin', 'prestasi', 'kesehatan', 'cuti', 'tunjangan', 'pensiun', 'user'));
+    }
     public function kesehatanpegawai()
     {
         return view('kesejahteraanpegawai.kesehatan');
@@ -82,11 +96,7 @@ class HomeController extends Controller
     public function getPromosi(Request $request)
     {
         $role = Auth::user()->role;
-        if ($request) {
-            $promosi = Promosi::where('namafile', 'like', '%'.$request->search.'%')->get();
-        } else {
-            $promosi = Promosi::all();
-        }
+        $promosi = Promosi::all();
         return view('pengendaliankarir.promosi', compact('promosi', 'request' , 'role'));
     }
 
@@ -669,17 +679,4 @@ class HomeController extends Controller
         return redirect('/manajemenuser');
     }
 
-    public function downloadpdf()
-    {
-        $data = Promosi::limit(20)->get();
-        $pdf = PDF::loadview('penjualan-pdf', compact('data'));
-        $pdf->setPaper('A4', 'potrait');
-	    return $pdf->stream('penjualan.pdf');
-    }
-
-    public function showpdfpromosi($id)
-    {
-        $data = Promosi::find($id);
-        return view('viewpdf', compact('data'));
-    }
 }

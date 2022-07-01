@@ -61,7 +61,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="/pensiun"><button type="button" class="btn btn-secondary" data-toggle="modal">Close</button></a>
                                             <input type="submit" class="btn btn-primary" value="Save">
                                         </div>
                                     </div>
@@ -161,7 +161,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <a href="/pensiun"><button type="button" class="btn btn-secondary" data-toggle="modal">Close</button></a>
                                                                         <input type="submit" class="btn btn-primary" value="Save">
                                                                     </div>
                                                                 </form>

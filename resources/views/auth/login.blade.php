@@ -59,13 +59,14 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enerror
                             </div>
 
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-between">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <a href="/register" title="Register"><button class="btn btn-primary " type="button" data-toggle="modal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Register</button></a>
                             </div>
                         </form>
                     </div>
