@@ -15,7 +15,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Cuti</h1>
@@ -23,9 +22,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data </button>
                         @endif
                     </div>
-
                     <!-- Button trigger modal -->
-
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -80,10 +77,18 @@
                             </div>
                             </form>
                         </div>
-                        <!-- /.container-fluid -->
-
                     </div>
-
+                    <!-- End Tambah Data -->
+                    <form method="get" action="{{ route('cuti') }}" class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input class="form-control bg-light border-secondary small" id="myInput" type="text" placeholder="Search..">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -103,7 +108,7 @@
                                             @endif
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="myTable">
                                         @foreach($cuti as $value)
                                         <tr>
                                             <td>{{ $value->id }}</td>

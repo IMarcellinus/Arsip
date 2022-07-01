@@ -80,10 +80,18 @@
                             </div>
                         </form>
                         </div>
-                        <!-- /.container-fluid -->
-
                     </div>
-
+                    <!-- End Tambah Data -->
+                    <form method="get" action="{{ route('tunjangan') }}" class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input class="form-control bg-light border-secondary small" id="myInput" type="text" placeholder="Search..">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -103,7 +111,7 @@
                                             @endif
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="myTable">
                                         @foreach($tunjangan as $value)
                                         <tr>
                                             <td>{{ $value->id }}</td>
@@ -136,9 +144,9 @@
                                                                             <div class="input-group date" id="datepicker">
                                                                                 <input type="date" name="date" class="form-control" value="{{ $value->date }}">
                                                                                 <span class="input-group-append">
-                                                                                            <span class="input-group-text bg-white d-block">
-                                                                                                <i class="fa fa-calendar"></i>
-                                                                                            </span>
+                                                                                    <span class="input-group-text bg-white d-block">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </span>
                                                                                 </span>
                                                                             </div>
                                                                         </div>

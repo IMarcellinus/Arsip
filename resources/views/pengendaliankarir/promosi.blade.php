@@ -1,7 +1,6 @@
 @extends('layouts.navbar')
 @section('content')
                 <!-- Begin Page Content -->
-                <!-- Tambah Data -->
                 <div class="container-fluid">
                     <form action="{{ route('tambahpromosi') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -73,17 +72,13 @@
                     <!-- End Tambah Data -->
                     <form method="get" action="{{ route('promosi') }}" class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <!-- <input type="text" name="search" class="form-control bg-light border-secondary small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2"> -->
                             <input class="form-control bg-light border-secondary small" id="myInput" type="text" placeholder="Search..">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
-                                <!-- <input type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> -->
                             </div>
                         </div>
-
-
                     </form>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -113,7 +108,8 @@
                                             <td>{{ $value->namafile }}</td>
                                             <td>{{ $value->kode }}</td>
                                             <td>
-                                                <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
+                                                <a href="dokumen/{{$value->file}}">
+                                                    <button class="btn btn-success" type="button">Download</button></a>
                                             </td>
                                             @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
@@ -251,14 +247,6 @@
             <script type="text/javascript">
                 $(function() {
                     $('#datepicker').datepicker();
-                });
-                $(document).ready(function(){
-                $("#myInput").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
                 });
             </script>
 @endsection

@@ -28,17 +28,13 @@ require __DIR__.'/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/promosi', [App\Http\Controllers\HomeController::class, 'getPromosi'])->name('promosi');
 Route::get('/manajemenuser', [App\Http\Controllers\HomeController::class, 'manajemenuser'])->name('manajemenuser');
-Route::post('/tambahpromosi', [App\Http\Controllers\HomeController::class, 'simpanPromosi'])->name('tambahpromosi');
 // Crud Promosi
+Route::post('/tambahpromosi', [App\Http\Controllers\HomeController::class, 'simpanPromosi'])->name('tambahpromosi');
+Route::get('/promosi', [App\Http\Controllers\HomeController::class, 'getPromosi'])->name('promosi');
 Route::get('/tampilpromosi/{id}', [HomeController::class, 'tampilpromosi'])->name('tampilpromosi');
 Route::post('/updatepromosi/{id}', [App\Http\Controllers\HomeController::class, 'updatepromosi'])->name('updatepromosi');
 Route::get('/deletepromosi/{id}', [App\Http\Controllers\HomeController::class, 'deletepromosi'])->name('deletepromosi');
-Route::get('/caripromosi', [App\Http\Controllers\HomeController::class, 'searchPromosi'])->name('caripromosi');
-Route::get('/editgambarpromosi/{id}', [App\Http\Controllers\HomeController::class, 'editgambarpromosi'])->name('editgambarpromosi');
 // Crud Disiplin
 Route::get('/tampildisiplin/{id}', [HomeController::class, 'tampildisiplin'])->name('tampildisiplin');
 Route::get('/deletedisiplin/{id}', [App\Http\Controllers\HomeController::class, 'deletedisiplin'])->name('deletedisiplin');
@@ -60,27 +56,27 @@ Route::get('/deleteprestasi/{id}', [App\Http\Controllers\HomeController::class, 
 // Crud Kesehatan   
 Route::post('/updatekesehatan/{id}', [App\Http\Controllers\HomeController::class, 'updatedkesehatan'])->name('updatekesehatan');
 Route::post('/tambahkesehatan', [App\Http\Controllers\HomeController::class, 'simpanKesehatan'])->name('tambahkesehatan');
-Route::get('/kesehatan', [App\Http\Controllers\HomeController::class, 'getKesehatan'])->name('kesejahteraan.kesehatan');
+Route::get('/kesehatan', [App\Http\Controllers\HomeController::class, 'getKesehatan'])->name('kesehatan');
 Route::get('/deletekesehatan/{id}', [App\Http\Controllers\HomeController::class, 'deletekesehatan'])->name('deletekesehatan');
 Route::get('/tampilkesehatan/{id}', [HomeController::class, 'tampilkesehatan'])->name('tampilkesehatan');
 // Crud Cuti
 Route::post('/tambahcuti', [App\Http\Controllers\HomeController::class, 'simpanCuti'])->name('tambahcuti');
-Route::get('/cuti', [App\Http\Controllers\HomeController::class, 'getCuti'])->name('kesejahteraan.cuti');
-Route::get('/cuti/{id}', [HomeController::class, 'cuti'])->name('cuti');
+Route::get('/cuti', [App\Http\Controllers\HomeController::class, 'getCuti'])->name('cuti');
+Route::get('/tampilcuti/{id}', [HomeController::class, 'tampilcuti'])->name('tampilcuti');
 Route::post('/updatecuti/{id}', [App\Http\Controllers\HomeController::class, 'updatecuti'])->name('updatecuti');
 Route::get('/deletecuti/{id}', [App\Http\Controllers\HomeController::class, 'deletecuti'])->name('deletecuti');
 // Crud tunjangan
 Route::post('/tambahtunjangan', [App\Http\Controllers\HomeController::class, 'simpanTunjangan'])->name('tambahtunjangan');
-Route::get('/tunjangan', [App\Http\Controllers\HomeController::class, 'getTunjangan'])->name('kesejahteraan.tunjangan');
-Route::get('/tunjangan/{id}', [HomeController::class, 'tunjangan'])->name('tunjangan');
+Route::get('/tunjangan', [App\Http\Controllers\HomeController::class, 'getTunjangan'])->name('tunjangan');
+Route::get('/tampiltunjangan/{id}', [HomeController::class, 'tampiltunjangan'])->name('tampiltunjangan');
 Route::post('/updatetunjangan/{id}', [App\Http\Controllers\HomeController::class, 'updatetunjangan'])->name('updatetunjangan');
 Route::get('/deletetunjangan/{id}', [App\Http\Controllers\HomeController::class, 'deletetunjangan'])->name('deletetunjangan');
 // Crud pensiun
 Route::post('/tambahpensiun', [App\Http\Controllers\HomeController::class, 'simpanPensiun'])->name('tambahpensiun');
-Route::get('/pensiun', [App\Http\Controllers\HomeController::class, 'getPensiun'])->name('kesejahteraan.pensiun');
+Route::get('/pensiun', [App\Http\Controllers\HomeController::class, 'getPensiun'])->name('pensiun');
+Route::get('/tampilpensiun', [App\Http\Controllers\HomeController::class, 'tampilpensiun'])->name('tampilpensiun');
 Route::get('/deletepensiun/{id}', [App\Http\Controllers\HomeController::class, 'deletepensiun'])->name('deletepensiun');
 Route::post('/updatepensiun/{id}', [App\Http\Controllers\HomeController::class, 'updatepensiun'])->name('updatepensiun');
-Route::get('/pensiun/{id}', [HomeController::class, 'pensiun'])->name('pensiun');
 // crud manajemen user
 Route::post('/tambahuser', [App\Http\Controllers\HomeController::class, 'tambahuser'])->name('tambahuser');
 Route::post('/updateuser/{id}', [App\Http\Controllers\HomeController::class, 'updateuser'])->name('updateuser');

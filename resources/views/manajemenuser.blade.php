@@ -41,6 +41,10 @@
                                                 <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email">
                                             </div>
                                             <div class="mb-3">
+                                                <label for="formGroupExampleInput2" class="form-label">nim</label>
+                                                <input type="text" name="nim" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nim">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">password</label>
                                                 <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
                                             </div>
@@ -99,7 +103,6 @@
                                                 <a href="#/manajemenuser/{{ $x->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$x->id}}" type="button" data-toggle="modal"><i
                                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                 <!-- Modal -->
-                                                
                                                 <!-- Tombol Delete -->
                                                 <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
@@ -133,7 +136,7 @@
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="formGroupExampleInput2" class="form-label">password</label>
-                                                                        <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
+                                                                        <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password" required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                     </div>

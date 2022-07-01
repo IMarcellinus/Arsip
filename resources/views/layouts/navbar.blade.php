@@ -91,10 +91,10 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Sub Menu</h6>
-                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.kesehatan') }}"><i class="fas fa-user-md"></i>Kesehatan</a>
-                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.cuti') }}"><i class="fas fa-retweet"></i> Cuti</a>
-                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.tunjangan') }}"><i class="fas fa-coins"></i> Tunjangan</a>
-                            <a class="collapse-item text-start" href="{{ route('kesejahteraan.pensiun') }}"><i class="fas fa-handshake"></i> Pensiun</a>
+                            <a class="collapse-item text-start" href="{{ route('kesehatan') }}"><i class="fas fa-user-md"></i>Kesehatan</a>
+                            <a class="collapse-item text-start" href="{{ route('cuti') }}"><i class="fas fa-retweet"></i> Cuti</a>
+                            <a class="collapse-item text-start" href="{{ route('tunjangan') }}"><i class="fas fa-coins"></i> Tunjangan</a>
+                            <a class="collapse-item text-start" href="{{ route('pensiun') }}"><i class="fas fa-handshake"></i> Pensiun</a>
                         </div>
                     </div>
                 </li>
@@ -209,26 +209,22 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal-footer">
-        <a class="btn btn-primary" href="login.html">Logout</a>
-    </div>
-
-
-    
-    
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
     <script src="{{ asset('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script>
-    /*!
- * Start Bootstrap - SB Admin 2 v4.1.3 (https://startbootstrap.com/theme/sb-admin-2)
- * Copyright 2013-2021 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin-2/blob/master/LICENSE)
- */
-
-!function(l){"use strict";l("#sidebarToggle, #sidebarToggleTop").on("click",function(e){l("body").toggleClass("sidebar-toggled"),l(".sidebar").toggleClass("toggled"),l(".sidebar").hasClass("toggled")&&l(".sidebar .collapse").collapse("hide")}),l(window).resize(function(){l(window).width()<768&&l(".sidebar .collapse").collapse("hide"),l(window).width()<480&&!l(".sidebar").hasClass("toggled")&&(l("body").addClass("sidebar-toggled"),l(".sidebar").addClass("toggled"),l(".sidebar .collapse").collapse("hide"))}),l("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(e){var o;768<l(window).width()&&(o=(o=e.originalEvent).wheelDelta||-o.detail,this.scrollTop+=30*(o<0?1:-1),e.preventDefault())}),l(document).on("scroll",function(){100<l(this).scrollTop()?l(".scroll-to-top").fadeIn():l(".scroll-to-top").fadeOut()}),l(document).on("click","a.scroll-to-top",function(e){var o=l(this);l("html, body").stop().animate({scrollTop:l(o.attr("href")).offset().top},1e3,"easeInOutExpo"),e.preventDefault()})}(jQuery);
+    !function(l){"use strict";l("#sidebarToggle, #sidebarToggleTop").on("click",function(e){l("body").toggleClass("sidebar-toggled"),l(".sidebar").toggleClass("toggled"),l(".sidebar").hasClass("toggled")&&l(".sidebar .collapse").collapse("hide")}),l(window).resize(function(){l(window).width()<768&&l(".sidebar .collapse").collapse("hide"),l(window).width()<480&&!l(".sidebar").hasClass("toggled")&&(l("body").addClass("sidebar-toggled"),l(".sidebar").addClass("toggled"),l(".sidebar .collapse").collapse("hide"))}),l("body.fixed-nav .sidebar").on("mousewheel DOMMouseScroll wheel",function(e){var o;768<l(window).width()&&(o=(o=e.originalEvent).wheelDelta||-o.detail,this.scrollTop+=30*(o<0?1:-1),e.preventDefault())}),l(document).on("scroll",function(){100<l(this).scrollTop()?l(".scroll-to-top").fadeIn():l(".scroll-to-top").fadeOut()}),l(document).on("click","a.scroll-to-top",function(e){var o=l(this);l("html, body").stop().animate({scrollTop:l(o.attr("href")).offset().top},1e3,"easeInOutExpo"),e.preventDefault()})}(jQuery);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
     </script>
 </body>
 </html>

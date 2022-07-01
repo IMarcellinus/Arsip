@@ -69,9 +69,18 @@
                             </div>
                         </div>
                         <!-- /.container-fluid -->
-
                     </div>
-
+                    <!-- End Tambah Data -->
+                    <form method="get" action="{{ route('disiplinpegawai') }}" class="p-2 d-none d-sm-inline-block form-inline mr-auto ml-md-0 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input class="form-control bg-light border-secondary small" id="myInput" type="text" placeholder="Search..">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -91,7 +100,7 @@
                                             @endif
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="myTable">
                                         @foreach($disiplin as $value)
                                         <tr>
                                             <td>{{ $value->id }}</td>
@@ -166,7 +175,7 @@
                                                     
                                                     </div>
                                                 <!-- Tombol Delete -->
-                                                <a href="/deletepenghargaan/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="/deletedisiplin/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                             @endif
                                         </tr>
