@@ -196,7 +196,7 @@
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; PT. Unilever.Tbk 20221</span>
+                                <span>Copyright &copy; PT. Unilover.Tbk 2022</span>
                             </div>
                         </div>
                     </footer>

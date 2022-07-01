@@ -34,14 +34,14 @@
     <div class="container">
         <div class="row justify-content-sm-center">
             <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-9 mt-5">
-                <h2 class="text-center">KEARSIPAN KEPEGAWAIAN PT UNILEVER Tbk.</h2>
+                <h2 class="text-center text-black font">KEARSIPAN KEPEGAWAIAN PT Unilover Tbk.</h2>
                 <div class="shadow-lg">
-                    <div class="p-5">
-                        <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+                    <div class="p-5 text-black">
+                        <h1 class="fs-4 card-title fw-bold mb-4 text-black">Login</h1>
                         <form method="POST" class="needs-validation" novalidate="" autocomplete="off" action="{{ route('login') }}">
                             @csrf
                             <div class="mb-3">
-                                <label class="mb-2 text-muted" for="email">{{ __('Email Address or Username') }}</label>
+                                <label class="mb-2" for="email">{{ __('Email Address or Username') }}</label>
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
 
                             <div class="mb-3">
                                 <div class="mb-2 w-100">
-                                    <label class="text-muted" for="password">{{ __('Password') }}</label>
+                                    <label class="" for="password">{{ __('Password') }}</label>
                                 </div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 @error('password')
