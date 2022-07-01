@@ -109,7 +109,7 @@
                                             <td>{{ $value->kode }}</td>
                                             <td>
                                                 <a href="dokumen/{{$value->file}}">
-                                                    <button class="btn btn-success" type="button">Download</button></a>
+                                                    <button class="btn btn-success" type="button">Preview</button></a>
                                             </td>
                                             @if($role == '1' || $role == '3' || $role == '5')
                                             <td>

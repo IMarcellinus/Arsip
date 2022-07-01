@@ -30,23 +30,23 @@
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Name</label>
-                                                <input type="text" class="form-control" name="name" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                                <input type="text" class="form-control" name="name" id="formGroupExampleInput2" placeholder="masukkan nama" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">Username</label>
-                                                <input type="text" class="form-control" name="username" id="formGroupExampleInput2" placeholder="masukkan Username">
+                                                <input type="text" class="form-control" name="username" id="formGroupExampleInput2" placeholder="masukkan Username" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">email</label>
-                                                <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email">
+                                                <input type="text" name="email" class="form-control" id="formGroupExampleInput2" placeholder="masukkan email" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">nim</label>
-                                                <input type="text" name="nim" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nim">
+                                                <input type="text" name="nim" class="form-control" id="formGroupExampleInput2" placeholder="masukkan nim" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="formGroupExampleInput2" class="form-label">password</label>
-                                                <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password">
+                                                <input type="text" name="password" class="form-control" id="formGroupExampleInput2" placeholder="masukkan password" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="inputState">Role</label>
@@ -100,11 +100,11 @@
                                             <td>{{ $x->role }}</td>
                                             @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
-                                                <a href="#/manajemenuser/{{ $x->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$x->id}}" type="button" data-toggle="modal"><i
+                                                <a href="#/manajemenuser/{{ $x->id }}" title="Edit"><button class="btn btn-primary btn" data-target="#edit{{$x->id}}" type="button" data-toggle="modal"><i
                                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                 <!-- Modal -->
                                                 <!-- Tombol Delete -->
-                                                <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="/deleteuser/{{ $x->id }}" class="btn btn-danger btn">Delete</a>
                                             </td>
                                             @endif
                                         </tr>

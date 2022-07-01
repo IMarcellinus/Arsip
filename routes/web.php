@@ -24,11 +24,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/manajemenuser', [App\Http\Controllers\HomeController::class, 'manajemenuser'])->name('manajemenuser');
 // Crud Promosi
 Route::post('/tambahpromosi', [App\Http\Controllers\HomeController::class, 'simpanPromosi'])->name('tambahpromosi');
 Route::get('/promosi', [App\Http\Controllers\HomeController::class, 'getPromosi'])->name('promosi');
@@ -78,6 +76,7 @@ Route::get('/tampilpensiun', [App\Http\Controllers\HomeController::class, 'tampi
 Route::get('/deletepensiun/{id}', [App\Http\Controllers\HomeController::class, 'deletepensiun'])->name('deletepensiun');
 Route::post('/updatepensiun/{id}', [App\Http\Controllers\HomeController::class, 'updatepensiun'])->name('updatepensiun');
 // crud manajemen user
+Route::get('/manajemenuser', [App\Http\Controllers\HomeController::class, 'manajemenuser'])->name('manajemenuser');
 Route::post('/tambahuser', [App\Http\Controllers\HomeController::class, 'tambahuser'])->name('tambahuser');
 Route::post('/updateuser/{id}', [App\Http\Controllers\HomeController::class, 'updateuser'])->name('updateuser');
 Route::get('/deleteuser/{id}', [App\Http\Controllers\HomeController::class, 'deleteuser'])->name('deleteuser');

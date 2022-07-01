@@ -116,11 +116,11 @@
                                             <td>{{ $value->namafile }}</td>
                                             <td>{{ $value->kode }}</td>
                                             <td>
-                                                <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Download</button></a>
+                                                <a href="dokumen/{{$value->file}}"><button class="btn btn-success" type="button">Preview</button></a>
                                             </td>
                                             @if($role == '1' || $role == '3' || $role == '5')
                                             <td>
-                                                <a href="#/tampilcuti/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn-sm" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
+                                                <a href="#/tampilcuti/{{ $value->id }}" title="Edit"><button class="btn btn-primary btn" data-target="#edit{{$value->id}}" type="button" data-toggle="modal"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</button></a>
                                                     <div class="modal fade" id="edit{{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -180,7 +180,7 @@
                                                     </div>
                                                     <!-- /.container-fluid -->
                                                     </div>
-                                                <a href="/deletecuti/{{ $value->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="/deletecuti/{{ $value->id }}" class="btn btn-danger btn">Delete</a>
                                             </td>
                                             @endif
                                         </tr>
@@ -194,7 +194,7 @@
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; PT. Unilever.Tbk 20221</span>
+                                <span>Copyright &copy; PT. Unilever.Tbk 2022</span>
                             </div>
                         </div>
                     </footer>
