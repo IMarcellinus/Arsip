@@ -1,3 +1,30 @@
+### Foto Projek
+- Login
+![This is an image](fotoprojek/login.png)
+- Register
+![This is an image](fotoprojek/register.png)
+- Dashboard
+![This is an image](fotoprojek/dashboard.png)
+- Form Cuti
+![This is an image](fotoprojek/form_cuti.png)
+- Form Disiplin Pegawai
+![This is an image](fotoprojek/form_disiplin_pegawai.png)
+- Form Kesehatan
+![This is an image](fotoprojek/form_kesehatan.png)
+- Form Penilaian Prestasi
+![This is an image](fotoprojek/form_penilaian_prestasi.png)
+- Form Pensiun
+![This is an image](fotoprojek/form_pensiun.png)
+- Form Promosi
+![This is an image](fotoprojek/form_promosi.png)
+- Form Tanda Penghargaan
+![This is an image](fotoprojek/form_tanda_penghargaan.png)
+- Form Tunjangan
+![This is an image](fotoprojek/form_tunjangan.png)
+- Form Manajemen User
+![This is an image](fotoprojek/form_manajemen_user.png)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
